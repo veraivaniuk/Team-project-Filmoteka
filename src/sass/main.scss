@@ -4,4 +4,28 @@
  */
 
 // Стили для файла с примером HTML-фрагмента
-@import './example';
+
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+@import './utils/variables';
+@import './utils/mixins';
+
+@import './base/normalize';
+@import './base/base';
+
+
+@import 'layout/navigation';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/forms';
+
+@import './components/buttons';
+
+
+@import './pages/home';
+@import './pages/mylibrary';
+
+
+
+
