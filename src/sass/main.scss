@@ -14,18 +14,13 @@
 @import './base/normalize';
 @import './base/base';
 
-
 @import 'layout/navigation';
 @import 'layout/header';
+@import 'layout/films-list';
 @import 'layout/footer';
 @import 'layout/forms';
 
 @import './components/buttons';
 
-
 @import './pages/home';
 @import './pages/mylibrary';
-
-
-
-
