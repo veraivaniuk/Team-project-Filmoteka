@@ -1,5 +1,5 @@
 const BASE_URL = 'https://api.themoviedb.org/3/';
-const API_KEY = 'a27a3ebf69aa4114a466dc0f7f2b47a4';
+const API_KEY = 'd2f58f193ec10f64760e31baa52fd192';
 
 export function fetchMoviesByKeyWord(query) {
   return fetch(

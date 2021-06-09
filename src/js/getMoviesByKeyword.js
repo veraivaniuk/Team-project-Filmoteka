@@ -22,7 +22,7 @@ function onEnterSearchQuery(event) {
     return;
   }
   fetchMoviesByKeyWord(query).then(movies => {
-    console.log(movies);
+    // console.log(movies);
     renderPicturesGallery(movies);
   });
 }
