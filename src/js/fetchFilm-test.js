@@ -70,7 +70,7 @@ function pressESC(e) {
       if (key === 27) {
         refs.lightbox.classList.remove('is-open');
         refs.lightboxContent.innerHTML = '';
-        renderPicturesGallery();
+        renderFilmsGallery();
         removeEventListener(pressEscEventListener);
       }
     }
