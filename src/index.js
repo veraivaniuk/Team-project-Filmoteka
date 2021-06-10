@@ -1,5 +1,8 @@
 import './sass/main.scss';
-import fetchFiltm from './js/fetchFilm-test.js';
+
 import './js/pagination.js';
-import '../node_modules/basiclightbox/dist/basicLightbox.min.css';
 import './js/studentsGroup';
+
+import fetchFilm from './js/fetchFilm-test';
+import header from './js/header';
+import getMoviesByKeyword from './js/getMoviesByKeyword';
