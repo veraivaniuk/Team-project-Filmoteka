@@ -1,0 +1,81 @@
+.basicLightbox {
+  overflow: scroll;
+}
+
+.group-all {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin: auto;
+
+  @media screen and (max-width: (768px - 1)) {
+    margin-top: 70px;
+  }
+
+  width: 300px;
+
+  background-color: white;
+
+  @media screen and (min-width: 768px) {
+    width: 800px;
+
+    border-radius: 15px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 900px;
+  }
+}
+
+.group-card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 20px;
+
+  width: calc((100% - 80px) / 2);
+
+  @media screen and (min-width: 768px) {
+    width: calc((100% - 160px) / 4);
+  }
+
+  @media screen and (min-width: 1024px) {
+    margin: 30px;
+
+    width: calc((100% - 240px) / 4);
+  }
+}
+
+.group-image {
+  width: 100%;
+
+  border-radius: 15%;
+  box-shadow: 1px 1px 10px 1px #636363;
+}
+
+.group-name {
+  margin-bottom: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 200%;
+  line-height: 50%;
+}
+
+.group-role {
+  font-family: 'Roboto', sans-serif;
+  font-size: 100%;
+  line-height: 10%;
+
+  @media screen and (max-width: (768px - 1)) {
+    font-size: 14px;
+  }
+
+  color: #ff6b08;
+}
+
+.group-modal {
+  cursor: pointer;
+}
