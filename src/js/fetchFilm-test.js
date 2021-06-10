@@ -1,20 +1,21 @@
 import cardsLits from '../templates/film-list.hbs';
+
+import { refs } from './refs';
+
+
 import modalCard from '../templates/film-modal.hbs';
 import getGenres from './getGenres.js';
 import removeEventListener from './removerEventListener';
 
-const refs = {
-  gallery: document.querySelector('.card-list-container'),
-  li: document.querySelector('.movie-card'),
-  lightbox: document.querySelector('div.lightbox'),
-  lightboxOverlay: document.querySelector('.lightbox__overlay'),
-  lightboxContent: document.querySelector('.lightbox__content'),
-  closeBnt: document.querySelector('[data-action=close-lightbox]'),
-};
+
 // Fetch main page
+
 const BASE_URL = 'https://api.themoviedb.org/3/';
-fetch(`${BASE_URL}trending/movie/day?api_key=d2f58f193ec10f64760e31baa52fd192&page=1`)
+const apiKey = 'd2f58f193ec10f64760e31baa52fd192';
+
+fetch(`${BASE_URL}trending/movie/day?api_key=${apiKey}`)
   .then(r => r.json())
+
   .then(data => {
     return data.results;
   })
