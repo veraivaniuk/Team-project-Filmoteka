@@ -9,7 +9,7 @@ html {
 }
 body {
   background-color: $white-color;
-  font-family: Roboto, sans-serif;
+  font-family: 'Roboto', sans-serif;
   overflow: auto;
   padding-top: 0px !important;
 
@@ -19,6 +19,12 @@ body {
 }
 body.hide-overflow {
   overflow: hidden;
+}
+.section {
+  padding: 20px 0;
+  @include container-width_768 {
+    padding: 60px 0;
+  }
 }
 .container {
   width: 100%;
@@ -52,15 +58,16 @@ img {
   height: 100%;
 }
 a {
-  font-style: none;
+  // font-style: none; //не применяется данный стиль
   text-decoration: none;
   display: inline-block;
 }
-svg {
-  vertical-align: baseline;
-}
+// сбивает стили по умолчанию
+// svg {
+//   vertical-align: baseline;
+// }
 
-h1,
+// убрал h1
 h2,
 h3,
 h4,
