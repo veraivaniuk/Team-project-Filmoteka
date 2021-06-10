@@ -13,11 +13,11 @@ refs.btnWatched.addEventListener('click', onWatchedMovies)
 function onWatchedMovies() {
 
     const movies = localStorage.getItem(key)
-    renderPicturesGallery(movies);
+    renderFilmsGallery(movies);
 }
 
-function renderPicturesGallery(movies) {
-  const markup = cardsLits(movies);
+function renderFilmsGallery(movies) {
+  const markup = cardTemplate(movies);
 
   refs.gallery.insertAdjacentHTML('beforeend', markup);
 }
