@@ -1,2 +1,3 @@
 import './sass/main.scss';
-import fetchFiltm from './js/fetchFilm-test.js';
+import fetchFilm from './js/fetchFilm-test';
+import header from './js/header';

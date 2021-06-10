@@ -1,14 +1,12 @@
 import cardsLits from '../templates/film-list.hbs';
-const refs = {
-  gallery: document.querySelector('.card-list-container'),
-};
+import refs from './refs';
 
 const BASE_URL = 'https://api.themoviedb.org/3/';
-fetch(`${BASE_URL}trending/movie/day?api_key=d2f58f193ec10f64760e31baa52fd192&page=1`)
+const apiKey = 'd2f58f193ec10f64760e31baa52fd192';
+
+fetch(`${BASE_URL}trending/movie/day?api_key=${apiKey}`)
   .then(r => r.json())
-  .then(data => {
-    return data.results;
-  })
+  .then(data => data.results)
   .then(renderPicturesGallery);
 
 function renderPicturesGallery(movies) {
