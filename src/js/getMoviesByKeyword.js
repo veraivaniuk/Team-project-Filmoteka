@@ -1,7 +1,7 @@
 // import cardsLits from '../templates/film-list.hbs';
 
 /* Функция получает и рендерит первую страницу фильмов по ключевому слову */
-import searchWarning from '../templates/searchWarning.hbs';
+//import searchWarning from '../templates/searchWarning.hbs';
 import movieCard from '../templates/movieCard.hbs';
 import { refs } from './refs';
 import { fetchGenres } from './fetchGenresList';
