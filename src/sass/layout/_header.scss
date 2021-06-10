@@ -134,7 +134,7 @@
   right: 0;
   top: 0;
 }
-.user__input {
+.user__input  {
   margin: 0 auto;
   display: block;
   width: 100%;
@@ -151,6 +151,9 @@
 
   align-items: center;
   color: $white-color;
+}
+#user-input{
+  border-bottom: 1px solid $white-color;
 }
 .user__input::placeholder {
   color: $white-color;
