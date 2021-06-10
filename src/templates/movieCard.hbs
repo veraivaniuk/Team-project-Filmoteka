@@ -1,0 +1,16 @@
+{{#each this}}
+  <div class='film-card' id='{{id}}'>
+    <img src='https://image.tmdb.org/t/p/w500/{{poster_path}}' alt='{{title}}' />
+
+    <div class='description'>
+      <span class='description-item'>
+        {{title}}
+      </span>
+      {{#each genre_ids}}
+        <span class='description-item'>
+          {{this}}
+        </span>
+      {{/each}}
+    </div>
+  </div>
+{{/each}}
