@@ -17,10 +17,12 @@
 @import 'layout/navigation';
 @import 'layout/header';
 @import 'layout/films-list';
+@import 'layout/modal';
 @import 'layout/footer';
 @import 'layout/forms';
 
 @import './components/buttons';
+@import './components/_groupmodal';
 
 @import './pages/home';
 @import './pages/mylibrary';
