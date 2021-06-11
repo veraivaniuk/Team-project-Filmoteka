@@ -87,3 +87,11 @@
   align-items: center;
   margin: 0;
 }
+@media screen and (max-width: 767px) {
+  .lightbox__content {
+    height: 90vh;
+    position: absolute;
+    overflow: scroll;
+    margin: 0 auto;
+  }
+}
