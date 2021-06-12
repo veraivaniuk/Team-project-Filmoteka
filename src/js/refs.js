@@ -1,4 +1,3 @@
-
 export const refs = {
   gallery: document.querySelector('.card-list-container'),
   header: document.getElementById('header'),
@@ -16,4 +15,5 @@ export const refs = {
   closeBnt: document.querySelector('[data-action=close-lightbox]'),
   inputEl: document.querySelector('#user-input'),
   inputWrapperEl: document.querySelector('.input__container'),
+  footerEl: document.querySelector('.footer'),
 };
