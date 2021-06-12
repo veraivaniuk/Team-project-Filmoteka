@@ -3,20 +3,24 @@
 /* Функция получает и рендерит первую страницу фильмов по ключевому слову */
 //import searchWarning from '../templates/searchWarning.hbs';
 import movieCard from '../templates/movieCard.hbs';
+import { createWarningMessageEl, showWarningMessage, hideWarningMessage } from './warning-msg.js';
 import { refs } from './refs';
 import { fetchGenres } from './fetchGenresList';
 import { fetchMoviesByKeyWord } from './fetchMoviesByKeyword';
 import debounce from 'lodash.debounce';
 import { getDayMovies } from './getDayMovies';
 
+createWarningMessageEl();
+
 refs.inputEl.addEventListener('input', debounce(onEnterSearchQuery, 700));
 
 function onEnterSearchQuery(event) {
   const query = event.target.value;
-  sessionStorage.setItem('searchQuery', query);
+  localStorage.setItem('searchQuery', query);
 
   if (!query) {
     // зарендерить галлерею актуальных фильмов
+    hideWarningMessage();
     refs.gallery.innerHTML = '';
     getDayMovies();
     return;
@@ -46,20 +50,17 @@ function onEnterSearchQuery(event) {
 
 function renderPicturesGallery(movies) {
   if (movies.length === 0) {
-    // refs.gallery.innerHTML = '';
-    // getDayMovies();
-    // const markup = searchWarning();
-    // console.log(markup);
-
-    let warningEl = document.createElement('strong');
-    warningEl.className = 'input__search-warning';
-    warningEl.textContent =
-      'Search result not successful. Enter the correct movie name and try again, please.';
-    refs.inputWrapperEl.after(warningEl);
-    setTimeout(() => warningEl.remove(), 3000);
+    showWarningMessage();
     return;
-    // refs.inputWrapperEl.insertAdjacentHTML('afterend', markup);
   }
+
+  hideWarningMessage();
+  // refs.gallery.innerHTML = '';
+  // getDayMovies();
+  // const markup = searchWarning();
+  // console.log(markup);
+
+  // refs.inputWrapperEl.insertAdjacentHTML('afterend', markup);
 
   const markup = movieCard(movies);
   refs.gallery.innerHTML = '';
