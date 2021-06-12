@@ -1,15 +1,17 @@
-// import cardsLits from '../templates/film-list.hbs';
-
 /* Функция получает и рендерит первую страницу фильмов по ключевому слову */
-//import searchWarning from '../templates/searchWarning.hbs';
-import movieCard from '../templates/movieCard.hbs';
-import { createWarningMessageEl, showWarningMessage, hideWarningMessage } from './warning-msg.js';
+
 import { refs } from './refs';
+import movieCard from '../templates/movieCard.hbs';
+
+import { createWarningMessageEl, showWarningMessage, hideWarningMessage } from './warning-msg.js';
+
 import { fetchGenres } from './fetchGenresList';
 import { fetchMoviesByKeyWord } from './fetchMoviesByKeyword';
-import debounce from 'lodash.debounce';
-import { getDayMovies } from './getDayMovies';
 import getGenres from './getGenres.js';
+import getPoster from './getPoster.js';
+import { getDayMovies } from './getDayMovies';
+
+import debounce from 'lodash.debounce';
 
 createWarningMessageEl();
 
@@ -20,13 +22,24 @@ function onEnterSearchQuery(event) {
   localStorage.setItem('searchQuery', query);
 
   if (!query) {
-    // зарендерить галлерею актуальных фильмов
     hideWarningMessage();
     refs.gallery.innerHTML = '';
     getDayMovies();
     return;
   }
-  fetchMoviesByKeyWord(query).then(getGenres).then(renderPicturesGallery);
+  fetchMoviesByKeyWord(query).then(getGenres).then(getPoster).then(renderPicturesGallery);
+}
+
+function renderPicturesGallery(movies) {
+  if (movies.length === 0) {
+    showWarningMessage();
+    return;
+  }
+
+  hideWarningMessage();
+  const markup = movieCard(movies);
+  refs.gallery.innerHTML = '';
+  refs.gallery.insertAdjacentHTML('beforeend', markup);
 }
 
 // const genres = fetchGenres();
@@ -45,16 +58,3 @@ function onEnterSearchQuery(event) {
 //   });
 //   renderPicturesGallery(value[1]);
 // });
-
-function renderPicturesGallery(movies) {
-  if (movies.length === 0) {
-    showWarningMessage();
-    return;
-  }
-
-  hideWarningMessage();
-
-  const markup = movieCard(movies);
-  refs.gallery.innerHTML = '';
-  refs.gallery.insertAdjacentHTML('beforeend', markup);
-}
