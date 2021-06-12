@@ -101,7 +101,5 @@ function onPaginationClick(event) {
       lastPageRef.hidden = false;
     }
 
-    gallery.innerHTML = '';
-
     }
 }
