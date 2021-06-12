@@ -12,7 +12,6 @@ export function createWarningMessageEl() {
 export function showWarningMessage() {
   if (warnMesgEl.classList.contains('visually-hidden')) {
     warnMesgEl.classList.remove('visually-hidden');
-    console.log(warnMesgEl);
   }
 }
 

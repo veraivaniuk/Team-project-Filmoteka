@@ -7,7 +7,7 @@ import { createWarningMessageEl, showWarningMessage, hideWarningMessage } from '
 
 import { fetchGenres } from './fetchGenresList';
 import { fetchMoviesByKeyWord } from './fetchMoviesByKeyword';
-import getGenres from './getGenres.js';
+import { getMovieGenres } from './fetchGenresList';
 import getPoster from './getPoster.js';
 import { getDayMovies } from './getDayMovies';
 
@@ -27,7 +27,13 @@ function onEnterSearchQuery(event) {
     getDayMovies();
     return;
   }
-  fetchMoviesByKeyWord(query).then(getGenres).then(getPoster).then(renderPicturesGallery);
+
+  const genres = fetchGenres();
+  const movies = fetchMoviesByKeyWord(query);
+
+  Promise.all([genres, movies]).then(getMovieGenres).then(getPoster).then(renderPicturesGallery);
+
+  // fetchMoviesByKeyWord(query).then(getGenres).then(getPoster).then(renderPicturesGallery);
 }
 
 function renderPicturesGallery(movies) {
@@ -41,20 +47,3 @@ function renderPicturesGallery(movies) {
   refs.gallery.innerHTML = '';
   refs.gallery.insertAdjacentHTML('beforeend', markup);
 }
-
-// const genres = fetchGenres();
-// const movies = fetchMoviesByKeyWord();
-
-// Promise.all([genres, movies]).then(value => {
-//   const genres = value[0];
-
-//   console.log(genres);
-//   const moviesGenres = value[1].map(movie => movie.genre_ids);
-//   console.log(moviesGenres);
-//   moviesGenres.map(movie => {
-//     movie.map(id => {
-//       console.log(id);
-//     });
-//   });
-//   renderPicturesGallery(value[1]);
-// });
