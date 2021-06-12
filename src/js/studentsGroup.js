@@ -1,65 +1,27 @@
 import * as basicLightbox from 'basiclightbox';
-import vera from '../img/group-vera.jpg';
-import denis from '../img/group-denis.jpg';
-import yulija from '../img/group-yulija.jpg';
-import alexei from '../img/group-alexei.jpg';
-import eugenia from '../img/group-eugenia.jpg';
-import andrei from '../img/group-andrei.jpg';
-import valentina from '../img/group-valentina.jpg';
 
-const groupList = `<div class="group-all">
-<div class="group-card">
-    <img src="${vera}" alt="Vera" class="group-image">
-    <p class="group-name">Vera</p>
-    <p class="group-role">TEAM LEAD</p>
-   </div>
-<div class="group-card">
-    <img src="${denis}" alt="Denis" class="group-image">
-    <p class="group-name">Denis</p>
-    <p class="group-role">SCRUM MASTER</p>
-</div>
-<div class="group-card">
-    <img src="${yulija}" alt="Yulija" class="group-image">
-    <p class="group-name">Yulija</p>
-    <p class="group-role">DEVELOPER</p>
-</div>
-<div class="group-card">
-    <img src="${alexei}" alt="Alexei" class="group-image">
-    <p class="group-name">Alexei</p>
-    <p class="group-role">DEVELOPER</p>
-</div>
-<div class="group-card">
-    <img src="${eugenia}" alt="Eugenia" class="group-image">
-    <p class="group-name">Eugenia</p>
-    <p class="group-role">DEVELOPER</p>
-</div>
-<div class="group-card">
-    <img src="${andrei}" alt="Andrei" class="group-image">
-    <p class="group-name">Andrei</p>
-    <p class="group-role">DEVELOPER</p>
-</div>
-<div class="group-card">
-    <img src="${valentina}" alt="Valentina" class="group-image">
-    <p class="group-name">Valentina</p>
-    <p class="group-role">DEVELOPER</p>
-</div>
-</div>`;
+// Get the modal
+const modal = document.getElementById("myModal");
 
-const container = document.querySelector('.js-group-modal');
+// Get the button that opens the modal
+const btn = document.getElementById("myModalLink");
 
-container.addEventListener('click', openModal);
+// Get the <span> element that closes the modal
+const span = document.getElementsByClassName("close")[0];
 
-const modal = basicLightbox.create(groupList);
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
 
-function openModal(event) {
-  modal.show();
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
 
-  window.addEventListener('keydown', closeModalHandler);
-
-  function closeModalHandler(event) {
-    if (event.code === 'Escape') {
-      modal.close();
-      window.removeEventListener('keydown', closeModalHandler);
-    }
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
   }
 }
