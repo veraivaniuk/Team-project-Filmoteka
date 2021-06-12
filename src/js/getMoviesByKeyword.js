@@ -9,6 +9,7 @@ import { fetchGenres } from './fetchGenresList';
 import { fetchMoviesByKeyWord } from './fetchMoviesByKeyword';
 import debounce from 'lodash.debounce';
 import { getDayMovies } from './getDayMovies';
+import getGenres from './getGenres.js';
 
 createWarningMessageEl();
 
@@ -25,10 +26,7 @@ function onEnterSearchQuery(event) {
     getDayMovies();
     return;
   }
-  fetchMoviesByKeyWord(query).then(movies => {
-    // console.log(movies);
-    renderPicturesGallery(movies);
-  });
+  fetchMoviesByKeyWord(query).then(getGenres).then(renderPicturesGallery);
 }
 
 // const genres = fetchGenres();
@@ -55,12 +53,6 @@ function renderPicturesGallery(movies) {
   }
 
   hideWarningMessage();
-  // refs.gallery.innerHTML = '';
-  // getDayMovies();
-  // const markup = searchWarning();
-  // console.log(markup);
-
-  // refs.inputWrapperEl.insertAdjacentHTML('afterend', markup);
 
   const markup = movieCard(movies);
   refs.gallery.innerHTML = '';
