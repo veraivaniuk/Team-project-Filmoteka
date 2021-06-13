@@ -1,5 +1,6 @@
 import './sass/main.scss';
 
+import './js/preloader.js';
 import './js/pagination.js';
 import './js/studentsGroup';
 
