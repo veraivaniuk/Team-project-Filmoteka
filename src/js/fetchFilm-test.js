@@ -81,6 +81,6 @@ function pressESC(e) {
 const pressOverlayListener = refs.lightboxOverlay.addEventListener('click', () => {
   refs.lightbox.classList.remove('is-open');
   refs.lightboxContent.innerHTML = '';
-  renderPicturesGallery();
+  renderFilmsGallery();
   removeEventListener(pressOverlayListener);
 });
