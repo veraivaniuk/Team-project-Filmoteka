@@ -78,4 +78,4 @@ var t,e=arguments[3];!function(e,n){"object"==typeof exports&&"undefined"!=typeo
 },{"./refs.js":"VyiV","../templates/cardTemplate.hbs":"Tawn","../templates/film-list.hbs":"fCL1","./getGenres.js":"Sjky","./pnotify.js":"fRfm","./warning-msg.js":"BZoA"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/pagination.js"),require("./js/studentsGroup");var e=u(require("./js/fetchFilm-test")),r=u(require("./js/header")),s=u(require("./js/getMoviesByKeyword")),i=u(require("./js/watched"));function u(e){return e&&e.__esModule?e:{default:e}}
 },{"./sass/main.scss":"clu1","./js/pagination.js":"o8lo","./js/studentsGroup":"IVOW","./js/fetchFilm-test":"Svq0","./js/header":"cGsR","./js/getMoviesByKeyword":"Nr4W","./js/watched":"BL0Q"}]},{},["Focm"], null)
-//# sourceMappingURL=/Team-project-Filmoteka/src.26c36de9.js.map
+//# sourceMappingURL=/Team-project-Filmoteka/src.450d8211.js.map
