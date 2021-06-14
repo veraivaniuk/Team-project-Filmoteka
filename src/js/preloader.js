@@ -1,7 +1,7 @@
 window.onload = function() {
-    let preloader = document.getElementById('preloader');
-    preloader.classList.add('hide-preloader');
     setTimeout(function() {
+        let preloader = document.getElementById('preloader');
+        preloader.classList.add('hide-preloader');
           preloader.classList.add('preloader-hidden');
     }, 3000);
 }
