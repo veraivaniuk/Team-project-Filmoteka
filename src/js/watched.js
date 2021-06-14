@@ -4,7 +4,8 @@ import { refs } from './refs.js';
 import cardTemplate from'../templates/cardTemplate.hbs';
 import cardsLits from '../templates/film-list.hbs';
 import getGenres from './getGenres.js';
-import { pnotifyError, pnotifyNotice } from './pnotify.js'
+import { pnotifyNotice } from './pnotify.js';
+import { hideWarningMessage } from './warning-msg.js'
 
 
 
@@ -35,45 +36,51 @@ function renderFilmsGalleryOnLiba(movies) {
   refs.gallery.insertAdjacentHTML('beforeend', markup);
 }
 
-let localStorageKey = '';
+
 
 //add to  localStorage
 refs.lightboxContent.addEventListener('click', addTolocalStorage)
 
 function addTolocalStorage (e) {
-  const idMovie = e.target.getAttribute('id');
-  localStorageKey = e.target.dataset.action;
-  let existingEntries = JSON.parse(localStorage.getItem(localStorageKey)) || [];
-  // console.log(existingEntries);
-  // if(existingEntries.find(entry=>entry.id===idMovie)) {
-  //   pnotifyNotice();
-  //   return null;
-  // } else {
-      fetch(`${BASE_URL}movie/${idMovie}?api_key=d2f58f193ec10f64760e31baa52fd192&language=en-US`)
-        .then(r => r.json())
-        .then(data => {
-          return {
-            id: data.id,
-            title: data.original_title,
-            genres: data.genres.slice(0, 2).map(({ name }) => name),
-            vote: data.vote_average,
-            release: data.release_date.substring(0, 4),
-            poster: data.poster_path,
-          };
-        })
-        .then((movieData)=>{
-          try {
 
-          if(existingEntries === null) existingEntries = [];
-
-            existingEntries.push(movieData);
-            localStorage.setItem(localStorageKey, JSON.stringify(existingEntries))
-      
-          } catch (err) {
-              console.error('Set state error: ', err);
-            }
+  if (e.target.nodeName !== 'BUTTON') {
+     return;
+   } else {
+    let localStorageKey = '';
+    const idMovie = e.target.getAttribute('id');
+    localStorageKey = e.target.dataset.action;
+    let existingEntries = JSON.parse(localStorage.getItem(localStorageKey)) || [];
+    if(existingEntries === null) existingEntries = [];
+    if(existingEntries.find(entry => entry.id == idMovie)) {
+      return pnotifyNotice();
+    } else {
+        fetch(`${BASE_URL}movie/${idMovie}?api_key=d2f58f193ec10f64760e31baa52fd192&language=en-US`)
+          .then(r => r.json())
+          .then(data => {
+            console.log(data);
+            return {
+              id: data.id,
+              title: data.original_title,
+              genres: data.genres.slice(0, 2).map(({ name }) => name),
+              vote: data.vote_average,
+              release: data.release_date.substring(0, 4),
+              poster: data.poster_path,
+            };
           })
-      // }
+          .then((movieData)=>{
+            try {
+
+            if(existingEntries === null) existingEntries = [];
+
+              existingEntries.push(movieData);
+              localStorage.setItem(localStorageKey, JSON.stringify(existingEntries))
+        
+            } catch (err) {
+                console.error('Set state error: ', err);
+              }
+            })
+        }
+      }
   }
 
 
@@ -96,6 +103,7 @@ function renderFilmsGallery(movies) {
 }
 
 refs.onHomeBtn.addEventListener('click', fetchTrendingMovie);
+refs.onLibraryBtn.addEventListener('click', hideWarningMessage)
 
   
     

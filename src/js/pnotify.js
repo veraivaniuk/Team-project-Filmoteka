@@ -1,13 +1,19 @@
 import '@pnotify/core/dist/PNotify.css';
-import '@pnotify/core/dist/Material.css';
-import 'material-design-icons/iconfont/material-icons.css';
-import { notice, error} from '@pnotify/core';
-//import { defaults } from '@pnotify/core';
+import {alert, Stack} from '@pnotify/core';
 
-export function pnotifyError () {
-    error ({ title: 'Error', text: 'No couuntry with this name!', styling: 'material', icons: 'material', width: '250px', delay: 3000})
-}
+
+const myStack = new Stack({
+    firstpos1: 10,
+    firstpos2: 10,
+    modal: false,
+    maxOpen: Infinity
+});
 
 export function pnotifyNotice () {
-    notice({ title: 'Info', text: 'This movie is added already!', styling: 'material', icons: 'material', width: '250px', delay: 3000})
+    alert({ 
+        text: 'This movie is already added!',
+        width: '300px',
+        delay: 1500, 
+        stack: myStack
+        })
 }

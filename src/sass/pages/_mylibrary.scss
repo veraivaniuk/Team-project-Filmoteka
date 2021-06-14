@@ -1,23 +1,9 @@
-.vote-item {
-    display: flex;
-    position: relative;
-    background-color: $orange-color;
-    width: 36px;
-    height: 16px;
-    border-radius: 5px;
-    padding-left: 10px;
-  }
   .vote-item {
-    margin-top: 1px;
-    margin-bottom: 1px;
+    margin-left: 10px;
+    background-color: #ff6b01;
+    width: 36px;
+    border-radius: 5px;
+    color: #ffffff !important;
     text-align: center;
-  
-    color: $white-color;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.17;
-    position: absolute;
-    bottom: 0px;
-    right: 0;
-    left: 0;
+
   }
