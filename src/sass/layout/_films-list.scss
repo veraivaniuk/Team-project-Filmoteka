@@ -6,9 +6,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   grid-gap: 20px;
-
   margin-left: auto;
   margin-right: auto;
+  justify-items: center;
 }
 
 .card-list img {
@@ -36,7 +36,9 @@
   color: $orange-color;
   text-transform: none;
 }
-
+.film-card {
+  cursor: pointer;
+}
 .film-card:hover {
   box-shadow: 1px 1px $orange-second-color, 2px 2px $orange-second-color,
     3px 3px $orange-second-color, 4px 4px $orange-second-color, 5px 5px $orange-second-color,
@@ -88,10 +90,23 @@
   margin: 0;
 }
 @media screen and (max-width: 767px) {
+  .film-card {
+    width: 280px;
+  }
   .lightbox__content {
     height: 90vh;
     position: absolute;
     overflow: scroll;
     margin: 0 auto;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .film-card {
+    width: 294px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .film-card {
+    width: 280px;
   }
 }
