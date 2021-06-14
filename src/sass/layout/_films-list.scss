@@ -36,7 +36,9 @@
   color: $orange-color;
   text-transform: none;
 }
-
+.film-card {
+  cursor: pointer;
+}
 .film-card:hover {
   box-shadow: 1px 1px $orange-second-color, 2px 2px $orange-second-color,
     3px 3px $orange-second-color, 4px 4px $orange-second-color, 5px 5px $orange-second-color,
