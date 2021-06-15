@@ -4,8 +4,11 @@ import { refs } from './refs';
 
 
 import modalCard from '../templates/film-modal.hbs';
+import getPoster from './getPoster.js';
+import getPosterModal from './getPosterModal.js';
 import getGenres from './getGenres.js';
 import removeEventListener from './removerEventListener';
+import { get } from 'lodash';
 
 
 // Fetch main page
@@ -20,6 +23,7 @@ fetch(`${BASE_URL}trending/movie/day?api_key=${apiKey}`)
     return data.results;
   })
   .then(getGenres)
+  .then(getPoster)
   .then(renderFilmsGallery);
 
 function renderFilmsGallery(movies) {
@@ -45,9 +49,10 @@ refs.gallery.addEventListener('click', e => {
           popularity: data.popularity,
           vote: data.vote_average,
           votes: data.vote_count,
-          poster: data.poster_path,
+          poster_path: data.poster_path,
         };
       })
+      .then(getPosterModal)
       .then(renderCard);
 
     pressESC();

@@ -6,7 +6,8 @@ import cardsLits from '../templates/film-list.hbs';
 import getGenres from './getGenres.js';
 import { pnotifyNotice } from './pnotify.js';
 import { hideWarningMessage } from './warning-msg.js'
-
+import getPoster from './getPoster.js';
+import getPosterModal from './getPosterModal.js';
 
 
 const BASE_URL = 'https://api.themoviedb.org/3/';
@@ -16,11 +17,11 @@ refs.onWatchedBtn.addEventListener('click', onMyLibaMovies)
 refs.onQueueBtn.addEventListener('click', onMyLibaMovies)
 
 // get data fon localStorage
-function onMyLibaMovies(e) {
+function onMyLibaMovies(e, key = e.target.getAttribute('id')) {
   refs.gallery.innerHTML = '';
-  let key = e.target.getAttribute('id');
   console.log(key);
-  
+  //let key = e.target.getAttribute('id');
+
    try {
       const serializedState = localStorage.getItem(key);
       const movies = JSON.parse(serializedState);
@@ -28,6 +29,11 @@ function onMyLibaMovies(e) {
     } catch (err) {
         console.error('Get state error: ', err);
     }
+}
+
+function onMyLibaMoviesQueue(e){
+  //const qurue = 'queue';
+  return onMyLibaMovies(e, 'queue');
 }
 
 function renderFilmsGalleryOnLiba(movies) {
@@ -57,16 +63,16 @@ function addTolocalStorage (e) {
         fetch(`${BASE_URL}movie/${idMovie}?api_key=d2f58f193ec10f64760e31baa52fd192&language=en-US`)
           .then(r => r.json())
           .then(data => {
-            console.log(data);
             return {
               id: data.id,
               title: data.original_title,
               genres: data.genres.slice(0, 2).map(({ name }) => name),
               vote: data.vote_average,
               release: data.release_date.substring(0, 4),
-              poster: data.poster_path,
+              poster_path: data.poster_path,
             };
           })
+          .then(getPosterModal)
           .then((movieData)=>{
             try {
 
@@ -92,6 +98,7 @@ function fetchTrendingMovie() {
     .then(data => {
       return data.results;
     })
+    .then(getPoster)
     .then(getGenres)
     .then(renderFilmsGallery);
 }
@@ -103,7 +110,8 @@ function renderFilmsGallery(movies) {
 }
 
 refs.onHomeBtn.addEventListener('click', fetchTrendingMovie);
-refs.onLibraryBtn.addEventListener('click', hideWarningMessage)
+refs.onLibraryBtn.addEventListener('click', hideWarningMessage);
+refs.onLibraryBtn.addEventListener('click', onMyLibaMoviesQueue);
 
   
     
