@@ -75,7 +75,7 @@ function pressESC(e) {
         refs.lightbox.classList.remove('is-open');
         refs.lightboxContent.innerHTML = '';
         renderFilmsGallery();
-        removeEventListener('click', pressEscEventListener);
+        removeEventListener(pressEscEventListener);
       }
     }
   });
@@ -83,12 +83,12 @@ function pressESC(e) {
 
 const pressOverlayListener = refs.lightboxOverlay.addEventListener('click', e => {
   closeModalDetailsFilm();
-  removeEventListener('click', pressOverlayListener);
+  removeEventListener(pressOverlayListener);
 });
 
 const pressCloseBtnModal = refs.lightboxContent.addEventListener('click', e => {
   if (e.target.dataset.action === 'close-lightbox') {
     closeModalDetailsFilm();
-    removeEventListener('click', pressCloseBtnModal);
+    removeEventListener(pressCloseBtnModal);
   }
 });
