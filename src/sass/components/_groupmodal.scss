@@ -13,21 +13,26 @@
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
-/* Modal Content */
-.modal-content2 {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 50%;
-}
-
 /* The Close Button */
 .close {
   color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
+  height: 5px;
+  position: relative;
+  top: -815px;
+  left: 135px;
+
+  @media screen and (min-width: 768px) {
+    top: -305px;
+    left: 165px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    top: -335px;
+    left: 170px;
+  }
 }
 
 .close:hover,
@@ -40,21 +45,16 @@
 .group-all {
   display: flex;
   flex-wrap: wrap;
-
+  border-radius: 15px;
+  background-color: white;
   margin: auto;
 
   @media screen and (max-width: (768px - 1)) {
-    margin-top: 70px;
+    width: 300px;
   }
-
-  width: 300px;
-
-  background-color: white;
 
   @media screen and (min-width: 768px) {
     width: 700px;
-
-    border-radius: 15px;
   }
 
   @media screen and (min-width: 1024px) {
@@ -64,15 +64,11 @@
 
 .group-card {
   position: relative;
-
   display: flex;
-
   flex-direction: column;
   align-items: center;
-
   margin: 18px;
-
-  width: calc((100% - 80px) / 2);
+  width: 110px;
 
   @media screen and (min-width: 768px) {
     width: calc((100% - 160px) / 4);
@@ -80,7 +76,6 @@
 
   @media screen and (min-width: 1024px) {
     margin: 30px;
-
     width: calc((100% - 240px) / 4);
   }
 }
