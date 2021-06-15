@@ -31,4 +31,5 @@ export const refs = {
   bodyEl: document.querySelector('body'),
   switchControlEl: document.querySelector('.theme-switch__control'),
   switchModeChbxEl: document.getElementById('theme-switch-toggle'),
+  articleEl: document.querySelector('.card-list'),
 };
