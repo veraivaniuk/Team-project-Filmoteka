@@ -1,6 +1,7 @@
 import cardsLits from '../templates/film-list.hbs';
 import { refs } from './refs';
 import getGenres from './getGenres.js';
+import getPoster from './getPoster';
 
 export function getDayMovies() {
   const BASE_URL = 'https://api.themoviedb.org/3/';
@@ -13,6 +14,7 @@ export function getDayMovies() {
       const res = getGenres(data);
       return res;
     })
+    .then(getPoster)
     .then(renderPicturesGallery);
 }
 

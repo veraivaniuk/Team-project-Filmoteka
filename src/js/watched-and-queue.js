@@ -44,10 +44,11 @@ function renderFilmsGalleryOnLiba(movies) {
 //add to  localStorage
 refs.lightboxContent.addEventListener('click', addTolocalStorage);
 
+
 function addTolocalStorage(e) {
-  if (e.target.nodeName !== 'BUTTON') {
-    return;
-  } else {
+  if (e.target.nodeName !== 'BUTTON' || e.target.dataset.action === 'close-lightbox') {
+     return;
+   } else {
     let localStorageKey = '';
     const idMovie = e.target.getAttribute('id');
     localStorageKey = e.target.dataset.action;
@@ -105,3 +106,4 @@ function renderFilmsGallery(movies) {
 refs.onHomeBtn.addEventListener('click', fetchTrendingMovie);
 refs.onLibraryBtn.addEventListener('click', hideWarningMessage);
 refs.onLibraryBtn.addEventListener('click', onMyLibaMoviesQueue);
+
