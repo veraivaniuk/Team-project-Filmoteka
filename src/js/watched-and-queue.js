@@ -49,7 +49,7 @@ refs.lightboxContent.addEventListener('click', addTolocalStorage)
 
 function addTolocalStorage (e) {
 
-  if (e.target.nodeName !== 'BUTTON') {
+  if (e.target.nodeName !== 'BUTTON' || e.target.dataset.action === 'close-lightbox') {
      return;
    } else {
     let localStorageKey = '';
@@ -115,4 +115,42 @@ refs.onLibraryBtn.addEventListener('click', onMyLibaMoviesQueue);
 
   
     
-  
+// refs.lightboxOverlay.addEventListener('click', e => {
+//   closeModalDetailsFilm();
+//  });
+// refs.lightboxOverlay.removeEventListener('click', e => {
+//   closeModalDetailsFilm();
+//  });
+
+
+// refs.lightboxContent.addEventListener('click', e => {
+//   if (e.target.dataset.action === 'close-lightbox') {
+//     closeModalDetailsFilm();
+//   }
+// });
+
+// refs.lightboxContent.removeEventListener('click', e => {
+//   if (e.target.dataset.action === 'close-lightbox') {
+//     closeModalDetailsFilm();
+//   }
+// });
+
+
+// function closeModalDetailsFilm(e) {
+//   refs.lightbox.classList.remove('is-open');
+//   refs.lightboxContent.innerHTML = '';
+// }
+
+
+// const pressOverlayListener = refs.lightboxOverlay.addEventListener('click', e => {
+//   closeModalDetailsFilm();
+//   removeEventListener('click', pressOverlayListener);
+// });
+
+// const pressCloseBtnModal = refs.lightboxContent.addEventListener('click', e => {
+
+// if (e.target.dataset.action === 'close-lightbox') {
+//   closeModalDetailsFilm();
+//   removeEventListener('click', pressCloseBtnModal);
+// }
+// });
