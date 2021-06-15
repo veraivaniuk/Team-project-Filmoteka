@@ -1,4 +1,3 @@
-
 export const refs = {
   gallery: document.querySelector('.card-list-container'),
   header: document.getElementById('header'),
@@ -28,4 +27,5 @@ export const refs = {
   leftArrowRef: document.querySelector('.arrow-left'),
   prevDotsRef: document.querySelector('#previous'),
   nextDotsRef: document.querySelector('#next'),
+  footerEl: document.querySelector('.footer'),
 };

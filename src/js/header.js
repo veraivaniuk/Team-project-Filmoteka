@@ -46,6 +46,7 @@ function OnLibraryBtnClassList() {
   libraryBtnContainer.classList.add('flex');
   onHomeBtn.classList.remove('current');
   header.classList.add('library__bg__img');
+  QueueBtnClick();
 }
 
 onHomeBtn.addEventListener('click', currentPage.homeBtn);
