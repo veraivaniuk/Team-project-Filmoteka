@@ -1,15 +1,13 @@
 import cardsLits from '../templates/film-list.hbs';
 
 import { refs } from './refs';
-
-
+import closeModalDetailsFilm from './close-modal-details-film';
 import modalCard from '../templates/film-modal.hbs';
 import getPoster from './getPoster.js';
 import getPosterModal from './getPosterModal.js';
 import getGenres from './getGenres.js';
 import removeEventListener from './removerEventListener';
 import { get } from 'lodash';
-
 
 // Fetch main page
 
@@ -77,15 +75,20 @@ function pressESC(e) {
         refs.lightbox.classList.remove('is-open');
         refs.lightboxContent.innerHTML = '';
         renderFilmsGallery();
-        removeEventListener(pressEscEventListener);
+        removeEventListener('click', pressEscEventListener);
       }
     }
   });
 }
 
-const pressOverlayListener = refs.lightboxOverlay.addEventListener('click', () => {
-  refs.lightbox.classList.remove('is-open');
-  refs.lightboxContent.innerHTML = '';
-  renderFilmsGallery();
-  removeEventListener(pressOverlayListener);
+const pressOverlayListener = refs.lightboxOverlay.addEventListener('click', e => {
+  closeModalDetailsFilm();
+  removeEventListener('click', pressOverlayListener);
+});
+
+const pressCloseBtnModal = refs.lightboxContent.addEventListener('click', e => {
+  if (e.target.dataset.action === 'close-lightbox') {
+    closeModalDetailsFilm();
+    removeEventListener('click', pressCloseBtnModal);
+  }
 });
