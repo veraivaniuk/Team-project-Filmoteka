@@ -28,4 +28,7 @@ export const refs = {
   prevDotsRef: document.querySelector('#previous'),
   nextDotsRef: document.querySelector('#next'),
   footerEl: document.querySelector('.footer'),
+  bodyEl: document.querySelector('body'),
+  switchControlEl: document.querySelector('.theme-switch__control'),
+  switchModeChbxEl: document.getElementById('theme-switch-toggle'),
 };

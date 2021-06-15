@@ -1,9 +1,5 @@
-function switchThemeMode() {
-  const refs = {
-    bodyEl: document.querySelector('body'),
-    switchControlEl: document.querySelector('.theme-switch__control'),
-    switchModeChbxEl: document.getElementById('theme-switch-toggle'),
-  };
+import { refs } from './refs';
+
 
   const Theme = {
     LIGHT: 'light-theme',
@@ -51,4 +47,3 @@ function switchThemeMode() {
       changethemeMode(Theme.DARK, Theme.LIGHT);
     }
   }
-}
