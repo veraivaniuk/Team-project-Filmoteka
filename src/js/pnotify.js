@@ -13,7 +13,7 @@ export function pnotifyNotice () {
     alert({ 
         text: 'This movie is already added!',
         width: '300px',
-        delay: 1500, 
+        delay: 700, 
         stack: myStack
         })
 }
