@@ -3,6 +3,7 @@
   padding: 20px;
 }
 .modal-container {
+  position: relative;
   padding-top: 20px;
   padding-bottom: 20px;
   margin-left: auto;
@@ -235,8 +236,25 @@
     margin-bottom: 20px;
     color: $black-color;
   }
+  .lightbox .trailer-btn {
+    top: 30px;
+    left: 270px;
+  }
+  .lightbox .trailer iframe {
+    width: 330px;
+    height: 470px;
+  }
 }
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .modal .modal-info-description {
+    height: 150px;
+    margin-bottom: 20px;
+    color: $black-color;
 
+    overflow: scroll;
+    text-overflow: ellipsis;
+  }
+}
 @media screen and (min-width: 1024px) {
   .modal-container {
     padding-left: 40px;
@@ -254,11 +272,23 @@
     margin-left: 0;
     color: $black-color;
   }
+  .trailer-btn {
+    bottom: 30px;
+    left: 380px;
+  }
+  .lightbox .trailer-btn {
+    top: 30px;
+    left: 380px;
+  }
+  .lightbox .trailer iframe {
+    width: 440px;
+    height: 550px;
+  }
 }
 .lightbox__button {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: -10px;
+  right: -3px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -282,4 +312,22 @@
 .lightbox__button:hover,
 .lightbox__button:focus {
   background-color: rgba(255, 107, 8, 0.5);
+}
+.trailer {
+  position: absolute;
+  top: 35px;
+  left: 20px;
+}
+.trailer iframe {
+  width: 280px;
+  height: 440px;
+}
+.trailer-btn {
+  position: absolute;
+  top: 30px;
+  left: 220px;
+  width: 40px;
+  height: 40px;
+  background-image: url(/img/svg/play-video-svgrepo-com.svg);
+  background-repeat: no-repeat;
 }

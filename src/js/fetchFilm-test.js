@@ -3,6 +3,7 @@ import cardsLits from '../templates/film-list.hbs';
 import { refs } from './refs';
 import closeModalDetailsFilm from './close-modal-details-film';
 import modalCard from '../templates/film-modal.hbs';
+import Trailer from '../templates/trailer.hbs';
 import getPoster from './getPoster.js';
 import getPosterModal from './getPosterModal.js';
 import getGenres from './getGenres.js';
@@ -92,3 +93,30 @@ const pressCloseBtnModal = refs.lightboxContent.addEventListener('click', e => {
     removeEventListener(pressCloseBtnModal);
   }
 });
+
+// open trailer
+const openTrailerFilm = refs.lightboxContent.addEventListener('click', e => {
+  if (e.target.dataset.action === 'trailer') {
+    const id = e.target.getAttribute('id');
+    fetch(
+      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=d2f58f193ec10f64760e31baa52fd192&language=en-US`,
+    )
+      .then(r =>
+        r.json().then(data => {
+          return { id: data.results[0].key };
+        }),
+      )
+      .then(openTrailer)
+      .then(removeEventListener);
+  }
+});
+function openTrailer(movie) {
+  const markuptrailer = Trailer(movie);
+
+  refs.lightboxContent.insertAdjacentHTML('beforeend', markuptrailer);
+}
+// function closeTrailer(e) {
+//   if (e.target !== e.target.dataset.action) {
+//     refs.lightboxContent.classList.add('is-hidden');
+//   }
+// }
