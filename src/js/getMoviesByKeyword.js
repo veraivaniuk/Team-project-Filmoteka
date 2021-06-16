@@ -35,13 +35,24 @@ function onEnterSearchQuery(event) {
   const genres = fetchGenres();
   const movies = fetchMoviesByKeyWord(query);
 
-  Promise.all([genres, movies]).then(getMovieGenres).then(getPoster).then(renderPicturesGallery);
+  Promise.all([genres, movies])
+    .then(getMovieGenres)
+    .then(getPoster)
+    .then(renderPicturesGallery)
+    .catch(error => {
+      showWarningMessage(
+        'Oops! Something went wrong... Please try again. If the problem persists, contact our customer support',
+      );
+      console.log(error);
+    });
 }
 
 function renderPicturesGallery(movies) {
   if (movies.length === 0) {
     sessionStorage.removeItem('searchQuery');
-    showWarningMessage();
+    showWarningMessage(
+      'Search result not successful. Enter the correct movie name and try again, please.',
+    );
     return;
   }
 
