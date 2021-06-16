@@ -1,3 +1,5 @@
+/* STYLES FOR THEMES */
+
 body {
   @include transition(background-color);
 }
@@ -15,6 +17,42 @@ body.dark-theme {
 
 .card-list.dark-theme {
   background-color: #241e1e;
+  color: rgb(180, 180, 180);
+}
+
+.lightbox__content.dark-theme > .modal {
+  background-color: #241e1e;
+}
+
+.lightbox__content.dark-theme .modal-info-title,
+.lightbox__content.dark-theme .modal-info-popularity-data,
+.lightbox__content.dark-theme .modal-info-title-original-data,
+.lightbox__content.dark-theme .modal-info-genres-text,
+.lightbox__content.dark-theme .modal-info-genres-text-list,
+.lightbox__content.dark-theme .modal-info-about,
+.lightbox__content.dark-theme .modal-info-description,
+.lightbox__content.dark-theme .card-text,
+.lightbox__content.dark-theme .lightbox__button {
+  color: rgb(180, 180, 180);
+}
+
+.pagination-container.dark-theme .pagination-button,
+.pagination-container.dark-theme .dots {
+  // background-color: transparent;
+  color: rgb(200, 200, 200);
+}
+
+.pagination-button.dark-theme {
+  background-color: transparent;
+}
+
+.pagination-button.dark-theme.pagination-select {
+  background-color: #ff6b08;
+}
+
+.pagination-button.dark-theme.arrow-left,
+.pagination-button.dark-theme.arrow-right {
+  background-color: #f7f7f7;
 }
 
 /* THEME SWITCH */

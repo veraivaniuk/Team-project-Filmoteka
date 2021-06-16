@@ -32,4 +32,5 @@ export const refs = {
   switchControlEl: document.querySelector('.theme-switch__control'),
   switchModeChbxEl: document.getElementById('theme-switch-toggle'),
   articleEl: document.querySelector('.card-list'),
+  paginationBtnEl: document.querySelectorAll('.pagination-button'),
 };
