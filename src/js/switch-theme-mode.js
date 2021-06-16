@@ -25,6 +25,7 @@ function setTheme(themeMode) {
   localStorage.setItem('theme', themeMode);
   refs.bodyEl.classList.add(themeMode);
   refs.articleEl.classList.add(themeMode);
+  refs.lightboxContent.classList.add(themeMode);
 
   if (themeMode === Theme.LIGHT) {
     refs.switchModeChbxEl.checked = false;
@@ -37,6 +38,7 @@ function setTheme(themeMode) {
 function changethemeMode(oldTheme, newTheme) {
   refs.bodyEl.classList.replace(oldTheme, newTheme);
   refs.articleEl.classList.replace(oldTheme, newTheme);
+  refs.lightboxContent.classList.replace(oldTheme, newTheme);
 
   localStorage.setItem('theme', newTheme);
   console.log(newTheme);
