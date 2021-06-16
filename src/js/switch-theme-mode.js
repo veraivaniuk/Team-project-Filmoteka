@@ -5,6 +5,8 @@ const Theme = {
   DARK: 'dark-theme',
 };
 
+console.log(refs.paginationBtnEl);
+
 const themeMode = getlocalStorageThemeMode('theme');
 
 setTheme(themeMode);
@@ -26,6 +28,10 @@ function setTheme(themeMode) {
   refs.bodyEl.classList.add(themeMode);
   refs.articleEl.classList.add(themeMode);
   refs.lightboxContent.classList.add(themeMode);
+  refs.paginationRef.classList.add(themeMode);
+  refs.paginationBtnEl.forEach(btn => {
+    btn.classList.add(themeMode);
+  });
 
   if (themeMode === Theme.LIGHT) {
     refs.switchModeChbxEl.checked = false;
@@ -39,6 +45,10 @@ function changethemeMode(oldTheme, newTheme) {
   refs.bodyEl.classList.replace(oldTheme, newTheme);
   refs.articleEl.classList.replace(oldTheme, newTheme);
   refs.lightboxContent.classList.replace(oldTheme, newTheme);
+  refs.paginationRef.classList.replace(oldTheme, newTheme);
+  refs.paginationBtnEl.forEach(btn => {
+    btn.classList.replace(oldTheme, newTheme);
+  });
 
   localStorage.setItem('theme', newTheme);
   console.log(newTheme);
