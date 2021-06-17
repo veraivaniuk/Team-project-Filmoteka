@@ -15,7 +15,8 @@
 
 .pagination-button:not(:last-child),
 .dots {
-  margin-right: 20px;
+  margin-right: 10px;
+  padding: 10px;
 }
 
 .pagination-button {
@@ -60,4 +61,9 @@
 
 .arrow-right {
   background-image: url(../img/arrow-right.svg);
+}
+
+
+.pagination-container.is-hidden {
+  display: none;
 }

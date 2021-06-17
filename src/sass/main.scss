@@ -8,26 +8,20 @@
 @import 'abstracts/variables';
 @import 'abstracts/mixins';
 
-@import './utils/variables';
 @import './utils/mixins';
 
 @import './base/normalize';
 @import './base/base';
 
-@import 'layout/navigation';
 @import 'layout/header';
 @import 'layout/films-list';
 @import 'layout/modal';
 @import 'layout/footer';
-@import 'layout/forms';
 
-@import './components/vote';
 @import './components/warning-msg';
 @import './components/theme-switcher';
+@import './components/vote';
+@import './components/pagination';
+@import './components/groupmodal';
+@import './components/pnotify';
 
-@import './components/_pagination';
-
-@import './components/_groupmodal';
-
-@import './pages/home';
-@import './pages/mylibrary';

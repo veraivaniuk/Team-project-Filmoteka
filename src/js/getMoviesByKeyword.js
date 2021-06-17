@@ -5,13 +5,20 @@ import movieCard from '../templates/movieCard.hbs';
 
 import { createWarningMessageEl, showWarningMessage, hideWarningMessage } from './warning-msg.js';
 
-import { fetchGenres } from './fetchGenresList';
-import { fetchMoviesByKeyWord } from './fetchMoviesByKeyword';
+//import { fetchGenres } from './fetchGenresList';
+//import { fetchMoviesByKeyWord } from './fetchMoviesByKeyword';
+import FilmsApiService from './class-fetch';
 import { getMovieGenres } from './fetchGenresList';
-import getPoster from './getPoster.js';
-import { getDayMovies } from './getDayMovies';
+import getPoster from './getPoster';
+import getGenres from './getGenres';
+import { renderFilmsGallery } from './1fetch-film-test';
+import { resetPage } from './pagination'
 
 import debounce from 'lodash.debounce';
+
+
+
+const filmsApiService = new FilmsApiService();
 
 createWarningMessageEl();
 
@@ -24,27 +31,19 @@ function onEnterSearchQuery(event) {
   const query = event.target.value;
 
   if (!query) {
+    resetPage();
     hideWarningMessage();
     sessionStorage.removeItem('searchQuery');
     refs.gallery.innerHTML = '';
-    getDayMovies();
+    filmsApiService.fetchTrendingMovies()
+    .then(getGenres)
+    .then(getPoster)
+    .then(renderFilmsGallery);
     return;
   }
 
   sessionStorage.setItem('searchQuery', query);
-  const genres = fetchGenres();
-  const movies = fetchMoviesByKeyWord(query);
-
-  Promise.all([genres, movies])
-    .then(getMovieGenres)
-    .then(getPoster)
-    .then(renderPicturesGallery)
-    .catch(error => {
-      showWarningMessage(
-        'Oops! Something went wrong... Please try again. If the problem persists, contact our customer support',
-      );
-      console.log(error);
-    });
+  getMovieByKeyword(query);
 }
 
 function renderPicturesGallery(movies) {
@@ -64,15 +63,42 @@ function renderPicturesGallery(movies) {
 
 function onHomeBtnClick() {
   const savedQuery = sessionStorage.getItem('searchQuery');
+  resetPage();
+  refs.paginationRef.classList.remove('is-hidden');
 
   if (savedQuery) {
     refs.gallery.innerHTML = '';
     refs.inputEl.value = savedQuery;
     refs.inputEl.dispatchEvent(new Event('savedInput', { bubbles: false }));
+  } else {
+    refs.gallery.innerHTML = '';
+    filmsApiService.fetchTrendingMovies()
+    .then(getPoster)
+    .then(getGenres)
+    .then(renderFilmsGallery);
+
   }
 }
+
 
 function onLibraryBtnClick() {
   refs.inputEl.value = '';
   hideWarningMessage();
+}
+
+
+export function getMovieByKeyword(query, currentPage = 1) {
+  const genres = filmsApiService.fetchGenres();
+  const movies = filmsApiService.fetchMoviesByKeyWord(query, currentPage);
+
+  Promise.all([genres, movies])
+    .then(getMovieGenres)
+    .then(getPoster)
+    .then(renderPicturesGallery)
+    .catch(error => {
+      showWarningMessage(
+        'Oops! Something went wrong... Please try again. If the problem persists, contact our customer support',
+      );
+      console.log(error);
+    });
 }

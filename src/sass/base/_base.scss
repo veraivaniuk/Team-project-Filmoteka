@@ -17,9 +17,7 @@ body {
   font-weight: 500;
   line-height: 1.33;
 }
-body.hide-overflow {
-  overflow: hidden;
-}
+
 .section {
   padding: 20px 0;
   @include container-width_768 {
@@ -58,23 +56,17 @@ img {
   height: 100%;
 }
 a {
-  // font-style: none; //не применяется данный стиль
-  text-decoration: none;
+  font-style: none;
   display: inline-block;
+  text-decoration: none;
 }
-// сбивает стили по умолчанию
-// svg {
-//   vertical-align: baseline;
-// }
 
-// убрал h1
 h2,
 h3,
 h4,
 h5,
 h6 {
   margin: 0;
-
   color: $black-color;
 }
 
@@ -102,20 +94,6 @@ button {
   background-color: transparent;
 
   text-transform: uppercase;
-}
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
 }
 
 .is-hidden {
