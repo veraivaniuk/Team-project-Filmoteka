@@ -5,13 +5,11 @@ import movieCard from '../templates/movieCard.hbs';
 
 import { createWarningMessageEl, showWarningMessage, hideWarningMessage } from './warning-msg.js';
 
-//import { fetchGenres } from './fetchGenresList';
-//import { fetchMoviesByKeyWord } from './fetchMoviesByKeyword';
 import FilmsApiService from './class-fetch';
-import { getMovieGenres } from './fetchGenresList';
-import getPoster from './getPoster';
-import getGenres from './getGenres';
-import { renderFilmsGallery } from './1fetch-film-test';
+import { getMovieGenres } from './fetch-genres-list';
+import getPoster from './get-poster';
+import getGenres from './get-genres';
+import { renderFilmsGallery } from './fetch-film-test';
 import { resetPage } from './pagination'
 
 import debounce from 'lodash.debounce';

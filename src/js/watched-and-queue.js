@@ -3,12 +3,12 @@
 import { refs } from './refs.js';
 import cardTemplate from '../templates/cardTemplate.hbs';
 import cardsLits from '../templates/film-list.hbs';
-import getGenres from './getGenres.js';
+import getGenres from './get-genres.js';
 import { pnotifyNotice } from './pnotify.js';
 import { hideWarningMessage, showWarningMessage } from './warning-msg.js';
-import getPoster from './getPoster.js';
-import getPosterModal from './getPosterModal.js';
-import { renderFilmsGallery } from './1fetch-film-test.js';
+import getPoster from './get-poster.js';
+import getPosterModal from './get-poster-modal.js';
+import { renderFilmsGallery } from './fetch-film-test.js';
 
 import FilmsApiService from './class-fetch.js';
 const filmsApiService = new FilmsApiService();

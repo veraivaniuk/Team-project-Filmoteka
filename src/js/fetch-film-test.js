@@ -4,10 +4,10 @@ import { refs } from './refs';
 import closeModalDetailsFilm from './close-modal-details-film';
 import modalCard from '../templates/film-modal.hbs';
 import Trailer from '../templates/trailer.hbs';
-import getPoster from './getPoster.js';
-import getPosterModal from './getPosterModal.js';
-import getGenres from './getGenres.js';
-import removeEventListener from './removerEventListener';
+import getPoster from './get-poster.js';
+import getPosterModal from './get-poster-modal.js';
+import getGenres from './get-genres.js';
+import removeEventListener from './remover-event-listener';
 import { get } from 'lodash';
 import FilmsApiService from './class-fetch.js';
 

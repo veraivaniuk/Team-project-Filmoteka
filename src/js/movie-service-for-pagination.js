@@ -1,10 +1,10 @@
 import FilmsApiService from './class-fetch.js';
-import getGenres from './getGenres';
-import getPoster from './getPoster';
+import getGenres from './get-genres';
+import getPoster from './get-poster';
 import cardsLits from '../templates/film-list.hbs';
 import { refs } from './refs.js';
-import { getMovieByKeyword } from './getMoviesByKeyword.js';
-import { renderFilmsGallery } from './1fetch-film-test.js';
+import { getMovieByKeyword } from './get-movies-by-keyword.js';
+import { renderFilmsGallery } from './fetch-film-test.js';
 
 const filmsApiService = new FilmsApiService();
 
