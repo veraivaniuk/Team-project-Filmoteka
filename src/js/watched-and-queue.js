@@ -8,6 +8,7 @@ import { pnotifyNotice } from './pnotify.js';
 import { hideWarningMessage, showWarningMessage } from './warning-msg.js';
 import getPoster from './getPoster.js';
 import getPosterModal from './getPosterModal.js';
+import { renderFilmsGallery } from './1fetch-film-test.js';
 
 import FilmsApiService from './class-fetch.js';
 const filmsApiService = new FilmsApiService();
@@ -37,6 +38,8 @@ function onMyLibaMovies(e, key = e.target.getAttribute('id')) {
 }
 
 function onMyLibaMoviesQueue(e) {
+  refs.paginationRef.classList.add('is-hidden');
+  console.log(refs.paginationRef);
   return onMyLibaMovies(e, 'queue');
 }
 
@@ -61,39 +64,23 @@ function addTolocalStorage(e) {
     } else {
       filmsApiService.fetchMovieDetails(id)
         .then(getPosterModal)
-        .then(setLocalStorage);
+        .then(movieData => {
+          try {
+            if (existingEntries === null) existingEntries = [];
+
+            existingEntries.push(movieData);
+            localStorage.setItem(localStorageKey, JSON.stringify(existingEntries));
+          } catch(error) {
+            showWarningMessage(
+              'Oops! Something went wrong... Please try again. If the problem persists, contact our customer support',
+            );
+            console.log(error);
+          };
+        });
     }
   }
 }
 
-
-function setLocalStorage(movieData)  {
-  try {
-    existingEntries.push(movieData);
-    localStorage.setItem(localStorageKey, JSON.stringify(existingEntries));
-  } catch(error) {
-    showWarningMessage(
-      'Oops! Something went wrong... Please try again. If the problem persists, contact our customer support',
-    );
-    console.log(error);
-  };
-}
-
-function fetchTrendingMovie() {
-  refs.gallery.innerHTML = '';
-  filmsApiService.fetchTrendingMovies()
-    .then(getPoster)
-    .then(getGenres)
-    .then(renderFilmsGallery);
-}
-
-function renderFilmsGallery(movies) {
-  const markup = cardsLits(movies);
-
-  refs.gallery.insertAdjacentHTML('beforeend', markup);
-}
-
-refs.onHomeBtn.addEventListener('click', fetchTrendingMovie);
 refs.onLibraryBtn.addEventListener('click', hideWarningMessage);
 refs.onLibraryBtn.addEventListener('click', onMyLibaMoviesQueue);
 

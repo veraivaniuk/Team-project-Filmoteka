@@ -9,6 +9,7 @@ let btns = document.querySelectorAll('.pagination-button');
 
 
 
+
 function leftArrowBuild(event) {
       refs.leftArrowRef.hidden = event;
       refs.prevDotsRef.hidden = event;
@@ -91,4 +92,17 @@ function onPaginationClick(event) {
       rightArrowBuild(false);
     }
     }
+}
+
+
+export function resetPage (){
+  btns.forEach(el => el.classList.remove('pagination-select'));
+  refs.btn1Ref.textContent = 1;
+  refs.btn2Ref.textContent = 2;
+  refs.btn3Ref.textContent = 3;
+  refs.btn4Ref.textContent = 4;
+  refs.btn5Ref.textContent = 5;
+  refs.btn1Ref.classList.add('pagination-select');
+  currentPage = refs.btn1Ref.textContent;
+  leftArrowBuild(true);
 }

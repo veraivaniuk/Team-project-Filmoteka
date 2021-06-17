@@ -18,7 +18,7 @@ const filmsApiService = new FilmsApiService();
 
 filmsApiService.fetchTrendingMovies().then(getGenres).then(getPoster).then(renderFilmsGallery);
 
-function renderFilmsGallery(movies) {
+export function renderFilmsGallery(movies) {
   const markup = cardsLits(movies);
 
   refs.gallery.insertAdjacentHTML('beforeend', markup);
