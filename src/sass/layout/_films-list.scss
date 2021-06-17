@@ -38,13 +38,12 @@
 }
 .film-card {
   cursor: pointer;
+  transition: transform .25s cubic-bezier(.4,0,.2,1),box-shadow .25s cubic-bezier(.4,0,.2,1),-webkit-transform .25s cubic-bezier(.4,0,.2,1);
 }
 .film-card:hover {
-  box-shadow: 1px 1px $orange-second-color, 2px 2px $orange-second-color,
-    3px 3px $orange-second-color, 4px 4px $orange-second-color, 5px 5px $orange-second-color,
-    6px 6px $orange-second-color, 7px 7px $orange-second-color;
-  -webkit-transform: translateX(-7px);
-  transform: translateX(-7px);
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 5px #ff6600;
+  transform: scale(1.04);
 }
 
 .lightbox {

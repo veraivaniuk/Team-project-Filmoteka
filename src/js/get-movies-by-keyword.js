@@ -39,7 +39,7 @@ function onEnterSearchQuery(event) {
     .then(renderFilmsGallery);
     return;
   }
-
+  resetPage();
   sessionStorage.setItem('searchQuery', query);
   getMovieByKeyword(query);
 }
