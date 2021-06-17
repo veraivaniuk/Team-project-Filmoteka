@@ -5,13 +5,18 @@ import movieCard from '../templates/movieCard.hbs';
 
 import { createWarningMessageEl, showWarningMessage, hideWarningMessage } from './warning-msg.js';
 
-import { fetchGenres } from './fetchGenresList';
-import { fetchMoviesByKeyWord } from './fetchMoviesByKeyword';
+//import { fetchGenres } from './fetchGenresList';
+//import { fetchMoviesByKeyWord } from './fetchMoviesByKeyword';
+import FilmsApiService from './class-fetch.js';
 import { getMovieGenres } from './fetchGenresList';
 import getPoster from './getPoster.js';
 import { getDayMovies } from './getDayMovies';
 
 import debounce from 'lodash.debounce';
+
+
+
+const filmsApiService = new FilmsApiService();
 
 createWarningMessageEl();
 
@@ -32,8 +37,9 @@ function onEnterSearchQuery(event) {
   }
 
   sessionStorage.setItem('searchQuery', query);
-  const genres = fetchGenres();
-  const movies = fetchMoviesByKeyWord(query);
+
+  const genres = filmsApiService.fetchGenres();
+  const movies = filmsApiService.fetchMoviesByKeyWord(query);
 
   Promise.all([genres, movies])
     .then(getMovieGenres)

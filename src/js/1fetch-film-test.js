@@ -9,21 +9,14 @@ import getPosterModal from './getPosterModal.js';
 import getGenres from './getGenres.js';
 import removeEventListener from './removerEventListener';
 import { get } from 'lodash';
+import FilmsApiService from './class-fetch.js';
 
 // Fetch main page
 
-const BASE_URL = 'https://api.themoviedb.org/3/';
-const apiKey = 'd2f58f193ec10f64760e31baa52fd192';
+const filmsApiService = new FilmsApiService();
 
-fetch(`${BASE_URL}trending/movie/day?api_key=${apiKey}`)
-  .then(r => r.json())
 
-  .then(data => {
-    return data.results;
-  })
-  .then(getGenres)
-  .then(getPoster)
-  .then(renderFilmsGallery);
+filmsApiService.fetchTrendingMovies().then(getGenres).then(getPoster).then(renderFilmsGallery);
 
 function renderFilmsGallery(movies) {
   const markup = cardsLits(movies);
@@ -37,20 +30,7 @@ refs.gallery.addEventListener('click', e => {
   if (e.target.nodeName !== 'IMG') {
     return;
   } else {
-    fetch(`${BASE_URL}movie/${id}?api_key=d2f58f193ec10f64760e31baa52fd192&language=en-US`)
-      .then(r => r.json())
-      .then(data => {
-        return {
-          id: data.id,
-          title: data.original_title,
-          genres: data.genres.slice(0, 2).map(({ name }) => name),
-          about: data.overview,
-          popularity: data.popularity,
-          vote: data.vote_average,
-          votes: data.vote_count,
-          poster_path: data.poster_path,
-        };
-      })
+    filmsApiService.fetchMovieDetails(id)
       .then(getPosterModal)
       .then(renderCard);
 
@@ -98,14 +78,8 @@ const pressCloseBtnModal = refs.lightboxContent.addEventListener('click', e => {
 const openTrailerFilm = refs.lightboxContent.addEventListener('click', e => {
   if (e.target.dataset.action === 'trailer') {
     const id = e.target.getAttribute('id');
-    fetch(
-      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=d2f58f193ec10f64760e31baa52fd192&language=en-US`,
-    )
-      .then(r =>
-        r.json().then(data => {
-          return { id: data.results[0].key };
-        }),
-      )
+    
+    filmsApiService.fetchOpenVideo(id)
       .then(openTrailer)
       .then(removeEventListener);
   }
