@@ -91,6 +91,10 @@ function onPaginationClick(event) {
     if (Number(currentPage) < 996) {
       rightArrowBuild(false);
     }
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+  });
     }
 }
 
