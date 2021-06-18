@@ -103,7 +103,7 @@ body.dark-theme {
   height: 100%;
   color: transparent;
   user-select: none;
-  background-image: url(https://i.postimg.cc/857jHw2q/Screenshot-2020-04-16-at-1-07-06-PM.png);
+  background-image: url('../img/preloader-bcg/lil_mando.jpg');
   background-size: cover;
   background-color: #333;
   border-radius: inherit;
@@ -114,7 +114,7 @@ body.dark-theme {
 
 .theme-switch__marker {
   position: relative;
-  background-color: #f7ca33;
+  background-color: #f5cb42;
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -153,7 +153,8 @@ body.dark-theme {
   }
 }
 
-.theme-switch__toggle:focus + .theme-switch__track,
+/* .theme-switch__toggle:focus + .theme-switch__track,
 .theme-switch__toggle:active + .theme-switch__track {
   box-shadow: 0 0 0 3px $orange-color;
 }
+ */

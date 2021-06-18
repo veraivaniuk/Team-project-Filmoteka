@@ -32,7 +32,13 @@ refs.gallery.addEventListener('click', e => {
   } else {
     filmsApiService.fetchMovieDetails(id)
       .then(getPosterModal)
-      .then(renderCard);
+      .then(renderCard)
+      .catch(error => {
+        showWarningMessage(
+          'Oops! Something went wrong... Please try again. If the problem persists, contact our customer support',
+        );
+        console.log(error);
+      });
 
     pressESC();
 
@@ -81,7 +87,13 @@ const openTrailerFilm = refs.lightboxContent.addEventListener('click', e => {
     
     filmsApiService.fetchOpenVideo(id)
       .then(openTrailer)
-      .then(removeEventListener);
+      .then(removeEventListener)
+      .catch(error => {
+        showWarningMessage(
+          'Oops! Something went wrong... Please try again. If the problem persists, contact our customer support',
+        );
+        console.log(error);
+      });
   }
 });
 function openTrailer(movie) {
@@ -89,8 +101,3 @@ function openTrailer(movie) {
 
   refs.lightboxContent.insertAdjacentHTML('beforeend', markuptrailer);
 }
-// function closeTrailer(e) {
-//   if (e.target !== e.target.dataset.action) {
-//     refs.lightboxContent.classList.add('is-hidden');
-//   }
-// }

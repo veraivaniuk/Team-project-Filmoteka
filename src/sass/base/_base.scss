@@ -19,6 +19,7 @@ body {
 }
 
 .section {
+  min-height: calc(70vh - 76px);
   padding: 20px 0;
   @include container-width_768 {
     padding: 60px 0;

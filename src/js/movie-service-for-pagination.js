@@ -19,10 +19,22 @@ function onCurrentPage(event) {
             filmsApiService.fetchTrendingMovies(currentPage)
             .then(getGenres)
             .then(getPoster)
-            .then(renderFilmsGallery);
+            .then(renderFilmsGallery)
+            .catch(error => {
+              showWarningMessage(
+                'Oops! Something went wrong... Please try again. If the problem persists, contact our customer support',
+              );
+              console.log(error);
+            });
         } else {
           refs.gallery.innerHTML = '';
-          getMovieByKeyword(refs.inputEl.value, currentPage);
+          getMovieByKeyword(refs.inputEl.value, currentPage)
+          .catch(error => {
+            showWarningMessage(
+              'Oops! Something went wrong... Please try again. If the problem persists, contact our customer support',
+            );
+            console.log(error);
+          });
         };
       }
     };
@@ -45,10 +57,22 @@ function onCurrentPage(event) {
             .fetchTrendingMovies(currentPage)
             .then(getGenres)
             .then(getPoster)
-            .then(renderFilmsGallery);
+            .then(renderFilmsGallery)
+            .catch(error => {
+              showWarningMessage(
+                'Oops! Something went wrong... Please try again. If the problem persists, contact our customer support',
+              );
+              console.log(error);
+            });
         } else {
           refs.gallery.innerHTML = '';
-          getMovieByKeyword(refs.inputEl.value, currentPage);
+          getMovieByKeyword(refs.inputEl.value, currentPage)
+          .catch(error => {
+            showWarningMessage(
+              'Oops! Something went wrong... Please try again. If the problem persists, contact our customer support',
+            );
+            console.log(error);
+          });
         }
       }
     }

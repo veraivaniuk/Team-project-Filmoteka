@@ -36,7 +36,13 @@ function onEnterSearchQuery(event) {
     filmsApiService.fetchTrendingMovies()
     .then(getGenres)
     .then(getPoster)
-    .then(renderFilmsGallery);
+    .then(renderFilmsGallery)
+    .catch(error => {
+      showWarningMessage(
+        'Oops! Something went wrong... Please try again. If the problem persists, contact our customer support',
+      );
+      console.log(error);
+    });
     return;
   }
   resetPage();
@@ -73,7 +79,13 @@ function onHomeBtnClick() {
     filmsApiService.fetchTrendingMovies()
     .then(getPoster)
     .then(getGenres)
-    .then(renderFilmsGallery);
+    .then(renderFilmsGallery)
+    .catch(error => {
+      showWarningMessage(
+        'Oops! Something went wrong... Please try again. If the problem persists, contact our customer support',
+      );
+      console.log(error);
+    });
 
   }
 }
