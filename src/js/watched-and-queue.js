@@ -39,7 +39,7 @@ function onMyLibaMovies(e, key = e.target.getAttribute('id')) {
 
 function onMyLibaMoviesQueue(e) {
   refs.paginationRef.classList.add('is-hidden');
-  console.log(refs.paginationRef);
+  //console.log(refs.paginationRef);
   return onMyLibaMovies(e, 'queue');
 }
 
