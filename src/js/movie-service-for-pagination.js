@@ -5,6 +5,7 @@ import cardsLits from '../templates/film-list.hbs';
 import { refs } from './refs.js';
 import { getMovieByKeyword } from './get-movies-by-keyword.js';
 import { renderFilmsGallery } from './fetch-film-test.js';
+import { createWarningMessageEl, showWarningMessage, hideWarningMessage } from './warning-msg.js';
 
 const filmsApiService = new FilmsApiService();
 
@@ -42,6 +43,7 @@ refs.paginationRef.addEventListener('click', onCurrentPage);
 
 function onPaginationBtn (currentPage) {
   refs.gallery.innerHTML = '';
+  console.log(currentPage);
         filmsApiService
           .fetchTrendingMovies(currentPage)
           .then(getGenres)
@@ -55,6 +57,7 @@ function onPaginationBtn (currentPage) {
 
 function onPaginationBtnForInput (currentPage){
   refs.gallery.innerHTML = '';
+  console.log(currentPage);
   getMovieByKeyword(refs.inputEl.value, currentPage)
   .catch(error => {
   showWarningMessage(
